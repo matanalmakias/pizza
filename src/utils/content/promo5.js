@@ -1,0 +1,36 @@
+export const promo5 = {
+  title: "מאיטליה, באהבה",
+  text: "ממגוון הטעמים והמרקמים המיוחדים שמתאפיינים את המטבח האיטלקי, נולדו הפיצות המופלאות שלנו. מרגע הראשון שתטעמו את הפיצות שלנו, תיקחו חלק בחוויה טעימה. אנחנו מביאים לכם חומרי הגלם הטובים ביותר שיביאו לשולחן המשפחתי שלכם לתענוג בלתי רגיל.",
+  promoItems: [
+    {
+      _id: "1",
+      title: "פיצה עוף בופאלו",
+      code: 1039,
+      linkPath: "/product-single",
+      imageUrl: "/images/menu/pizza-05.png",
+      price: 11.99,
+      medium: { text: "משפחתית", price: 10.99 },
+      large: { text: "ענקית", price: 15.99 },
+    },
+    {
+      _id: "2",
+      title: "פיצה פפרוני",
+      code: 1040,
+      linkPath: "/product-single",
+      imageUrl: "/images/menu/pizza-06.png",
+      price: 11.99,
+      medium: { text: "משפחתית", price: 10.99 },
+      large: { text: "ענקית", price: 15.99 },
+    },
+    {
+      _id: "3",
+      title: "פיצה מרגריטה",
+      code: 1041,
+      linkPath: "/product-single",
+      imageUrl: "/images/menu/pizza-07.png",
+      price: 11.99,
+      medium: { text: "משפחתית", price: 10.99 },
+      large: { text: "ענקית", price: 15.99 },
+    },
+  ],
+};
