@@ -1,11 +1,14 @@
 import { content } from "../../../utils/content/content.js";
-import { productCategories } from "../../../utils/content/products";
+import {
+  productCategories,
+  productSortOptions,
+} from "../../../utils/content/products";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Lightbox from "react-18-image-lightbox";
 import "react-18-image-lightbox/style.css";
 import styles from "../../../styles/Menu6.module.scss";
-export default function Menu6({ helperCls }) {
+export default function Menu6() {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const { productList } = content;
@@ -20,43 +23,57 @@ export default function Menu6({ helperCls }) {
   };
   const { title, text } = content.menu6;
   useEffect(() => {}, [productsState]);
-  const sortProducts = (key) => {
+  const filterProducts = (key) => {
     if (key === `פיצות`) {
-      const sortedProducts = productList.filter(
+      const filteredProducts = productList.filter(
         (item) => item.category === `פיצות`
       );
 
-      setProductsState(sortedProducts);
+      setProductsState(filteredProducts);
     } else if (key === `זיוות`) {
-      const sortedProducts = productList.filter(
+      const filteredProducts = productList.filter(
         (item) => item.category === `זיוות`
       );
 
-      setProductsState(sortedProducts);
+      setProductsState(filteredProducts);
     } else if (key === `טוסטים`) {
-      const sortedProducts = productList.filter(
+      const filteredProducts = productList.filter(
         (item) => item.category === `טוסטים`
       );
 
-      setProductsState(sortedProducts);
+      setProductsState(filteredProducts);
     } else if (key === `סלטים`) {
-      const sortedProducts = productList.filter(
+      const filteredProducts = productList.filter(
         (item) => item.category === `סלטים`
       );
 
-      setProductsState(sortedProducts);
+      setProductsState(filteredProducts);
     } else if (key === `reset`) {
       setProductsState(productList);
     }
   };
+  const sortProducts = (key) => {
+    if (key === "category") {
+      const sortedProducts = [...productsState].sort((a, b) =>
+        a.category.localeCompare(b.category)
+      );
+      setProductsState(sortedProducts);
+    } else if (key === "lowPrice") {
+      const sortedProducts = [...productsState].sort(
+        (a, b) => a.price - b.price
+      );
+      setProductsState(sortedProducts);
+    } else if (key === `highPrice`) {
+      const sortedProducts = [...productsState].sort(
+        (a, b) => a.price + b.price
+      );
+      setProductsState(sortedProducts);
+    }
+  };
+
   return (
     <>
-      <section
-        id="menu-6"
-        className={`wide-70 menu-section division ${
-          helperCls ? helperCls : ""
-        }`}
-      >
+      <section id="menu-6" className={`wide-70 menu-section division `}>
         <div className="container">
           {/* SECTION TITLE */}
           <div className="row">
@@ -71,18 +88,26 @@ export default function Menu6({ helperCls }) {
           </div>
           <div className="row">
             <div className={styles.sort}>
-              סינון:
+              <p className="shadow p-2">סינון:</p>
               {productCategories.map((item, index) => (
-                <button key={index} onClick={() => sortProducts(item)}>
+                <button key={index} onClick={() => filterProducts(item)}>
                   {item}
                 </button>
               ))}
               <button
                 className={styles.reset}
-                onClick={() => sortProducts("reset")}
+                onClick={() => filterProducts("reset")}
               >
                 איפוס
               </button>
+            </div>
+            <div className={styles.sort}>
+              <p className="shadow p-2">מיון:</p>
+              {productSortOptions?.map((item) => (
+                <button onClick={() => sortProducts(item.name)} key={item._id}>
+                  {item.content}
+                </button>
+              ))}
             </div>
             {productsState?.map((item, index) => (
               <div className="col-sm-6 col-lg-3" key={index}>
@@ -125,7 +150,7 @@ export default function Menu6({ helperCls }) {
                     </div>
                     {/* Like Icon */}
                     <div className="like-ico ico-25">
-                      <Link href="">
+                      <Link to="">
                         <span className="flaticon-heart" />
                       </Link>
                     </div>
@@ -141,7 +166,7 @@ export default function Menu6({ helperCls }) {
                     </div>
                     {/* Add To Cart */}
                     <div className="add-to-cart bg-yellow ico-10">
-                      <Link href="/product-single">
+                      <Link to="/product-single">
                         <span className="flaticon-shopping-bag" /> הוסף לסל
                       </Link>
                     </div>
@@ -152,20 +177,24 @@ export default function Menu6({ helperCls }) {
           </div>
           {isOpen && (
             <Lightbox
-              mainSrc={images[photoIndex].url}
-              nextSrc={images[(photoIndex + 1) % images.length].url}
+              mainSrc={productList[photoIndex].url}
+              nextSrc={productList[(photoIndex + 1) % productList.length].url}
               prevSrc={
-                images[(photoIndex + images.length - 1) % images.length].url
+                productList[
+                  (photoIndex + productList.length - 1) % productList.length
+                ].url
               }
               onCloseRequest={closeLightbox}
               onMovePrevRequest={() =>
-                setPhotoIndex((photoIndex + images.length - 1) % images.length)
+                setPhotoIndex(
+                  (photoIndex + productList.length - 1) % productList.length
+                )
               }
               onMoveNextRequest={() =>
-                setPhotoIndex((photoIndex + 1) % images.length)
+                setPhotoIndex((photoIndex + 1) % productList.length)
               }
-              // imageTitle={images[photoIndex].title}
-              // imageCaption={images[photoIndex].description}
+              // imageTitle={productList[photoIndex].title}
+              // imageCaption={productList[photoIndex].description}
               className="abc"
             />
           )}

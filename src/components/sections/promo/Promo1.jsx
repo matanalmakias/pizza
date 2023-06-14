@@ -22,7 +22,7 @@ export default function Promo1({ helperCls }) {
                     <h3 className="h3-sm">{item.title}</h3>
                     <p className="p-lg">{item.text}</p>
                     <Link
-                      href={item.linkPath}
+                      to={item.linkPath}
                       className="btn btn-red tra-white-hover"
                     >
                       {item.btnText}

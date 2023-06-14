@@ -6,7 +6,7 @@ export const promo1 = {
       imageAlt: "פיצה",
       title: "הזמין עכשיו",
       text: "תיהנה מפיצות טעימות ישירות אליך הביתה",
-      linkPath: `/team`,
+      linkPath: `/menu-2`,
       btnText: "למידע נוסף",
     },
     {

@@ -42,4 +42,9 @@ export const routes = [
     path: "/cart",
     component: lazy(() => import("../../pages/Cart")),
   },
+  {
+    _id: v4(),
+    path: "/team",
+    component: lazy(() => import("../../pages/Team")),
+  },
 ];

@@ -84,3 +84,9 @@ export const productList = [
 export const productCategories = [
   ...new Set(productList.map((product) => product.category)),
 ];
+
+export const productSortOptions = [
+  { _id: `1`, name: `category`, content: `קטגוריה` },
+  { _id: `2`, name: `lowPrice`, content: `מחיר נמוך לגבוה` },
+  { _id: `3`, name: `highPrice`, content: `מחיר גבוה לנמוך` },
+];
