@@ -31,10 +31,8 @@ export default function Promo1({ helperCls }) {
                 </div>
               </div>
             ))}
-          </div>{" "}
-          {/* End row */}
-        </div>{" "}
-        {/* End container */}
+          </div>
+        </div>
       </section>
     </>
   );
