@@ -47,4 +47,9 @@ export const routes = [
     path: "/team",
     component: lazy(() => import("../../pages/Team")),
   },
+  {
+    _id: v4(),
+    path: "/faqs",
+    component: lazy(() => import("../../pages/Faqs")),
+  },
 ];

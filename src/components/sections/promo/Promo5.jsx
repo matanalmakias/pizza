@@ -1,9 +1,20 @@
 import { content } from "../../../utils/content/content.js";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { productList } from "../../../utils/content/products.js";
 
 export default function Promo5({ helperCls }) {
+  const [promoItemsState, setPromoItemsState] = useState([]);
   const { title, text, promoItems } = content.promo5;
+  useEffect(() => {
+    promoItems.forEach((item, index) => {
+      const newProduct = productList.find(
+        (product) => product._id === item._id
+      );
+      setPromoItemsState((s) => [...s, newProduct]);
+    });
+  }, []);
+
   return (
     <>
       <section
@@ -22,7 +33,7 @@ export default function Promo5({ helperCls }) {
             </div>
           </div>
           <div className="row d-flex align-items-center">
-            {promoItems?.map((item) => (
+            {promoItemsState?.map((item) => (
               <div key={item._id} className="col-sm">
                 <Link href="/product-single">
                   <div id="pb-5-2" className="pbox-5">

@@ -10,6 +10,7 @@ const NavRoutes = () => {
         {routes.map((route) => (
           <Route
             key={route._id}
+            exact
             path={route.path}
             element={<route.component />}
           />

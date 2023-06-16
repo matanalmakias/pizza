@@ -36,6 +36,16 @@ export const content = {
   faqs,
   promo5,
   promo1,
+  hero4: {
+    imgUrl: "/images/hero-4-img.png",
+    priceBadge: { text: `הצעה מיוחדת`, price: 9.99 },
+    heroText: {
+      title: `פיצות טעימות`,
+      subTitle: `אפוי טרי`,
+      text: `התפנקו עם מבחר היפה שלנו של פיצות טריות שנאפו עם המרכיבים הטובים ביותר. בין אם אתם חובבי מרגריטה קלאסית או חושקים בטעמים הרפתקניים, הפיצות שלנו בטוח יספקו את בלוטות הטעם שלכם.`,
+    },
+    btn: { text: `עיין בתפריט`, link: "/menu-2" },
+  },
   productList,
   menu6: {
     title: ` גלו את תפריט המגוון שלנו`,
